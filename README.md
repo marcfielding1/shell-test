@@ -50,11 +50,11 @@ Lambda based API.
 
 Endpoint validation in Joi
 
-Logging to ElasticSearch
+Logging to ElasticSearch(creds in KMS) 
 
-Error reporting via Sentry.
+Error reporting via Sentry.(creds in KMS)
 
-Voyage storage in MySQL or Dynamo - possible preference to MySQL as it'll allow better sorting during a query(maybe)
+Voyage storage in MySQL(creds in KMS) or Dynamo(assigned via Lambda role) - possible preference to MySQL as it'll allow better sorting during a query(maybe)
 
 Port, captain and vessel name validation done in static arrays held in config, would obviously be moved out to tables for production usage.
 
