@@ -19,7 +19,7 @@ POST /arrival
 
 Vessel - needs validation, do we have a vessel with that name.
 
-datetime - Funky datetime format need to convert to timestamp.
+datetime - Datetime format needs to convert to timestamp.
 
 port - needs validation that the port exists
 
