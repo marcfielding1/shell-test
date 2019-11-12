@@ -48,6 +48,12 @@ Sort array of objects in chronological order latest to oldest.
 
 Lambda based API.
 
+Endpoint validation in Joi
+
+Logging to ElasticSearch
+
+Error reporting via Sentry.
+
 Voyage storage in MySQL or Dynamo - possible preference to MySQL as it'll allow better sorting during a query(maybe)
 
 Port, captain and vessel name validation done in static arrays held in config, would obviously be moved out to tables for production usage.
