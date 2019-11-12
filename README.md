@@ -48,6 +48,8 @@ Sort array of objects in chronological order latest to oldest.
 
 Lambda based API.
 
+Authentication would usually be done via JWT will leave an example in but won't secure this API for now.
+
 Endpoint validation in Joi
 
 Logging to ElasticSearch(creds in KMS) 
