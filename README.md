@@ -2,6 +2,7 @@
 Star Ship Tracking API!
 
 This readme will be updated as I work, initial notes based on the spec provided. Will let you guys know when done.
+
 # Initial notes
 
 POST /arrival
@@ -15,8 +16,11 @@ POST /arrival
 ```
 
 Vessel - needs validation, do we have a vessel with that name.
+
 datetime - Funky datetime format need to convert to timestamp.
+
 port - needs validation that the port exists
+
 captain - needs validation that the captain exists
 
 GET /history/patsy+stone
@@ -41,7 +45,9 @@ Sort array of objects in chronological order latest to oldest.
 # Genernal architecture notes.
 
 Lambda based API.
-Voyage storage in MySQL or Dynamo
+
+Voyage storage in MySQL or Dynamo - possible preference to MySQL as it'll allow better sorting during a query(maybe)
+
 Port, captain and vessel name validation done in static arrays held in config, would obviously be moved out to tables for production usage.
 
 Dev and offline available via sls offline but pointing at Dev aws infrastructure configured for env vars.
