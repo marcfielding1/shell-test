@@ -16,8 +16,9 @@ POST /arrival
 "captain": "Patsy Stone"
 }
 ```
+Validations are based on an assumption that we actually need, if we're taking the third party API as the source of truth then perhaps we don't need them?
 
-Vessel - needs validation, do we have a vessel with that name.
+Vessel - needs validation, do we have a vessel with that name. 
 
 datetime - Datetime format needs to convert to timestamp.
 
