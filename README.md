@@ -51,7 +51,7 @@ Lambda based API.
 
 Authentication would usually be done via JWT will leave an example in but won't secure this API for now.
 
-Endpoint validation in Joi
+Endpoint parameter type validation in Joi
 
 Logging to ElasticSearch(creds in KMS) 
 
