@@ -31,10 +31,16 @@ paths:
           required: true
           schema:
             $ref: '#/definitions/addVoyage'
+        - in: header
+          name: "x-mock-header"
+          required: false
+          type: string
+          description: Custom header tells the backend to send a mock response based on the value for testing purposes.
+          enum: ["ADD_VOYAGE_SUCCESS", "BAD_REQUEST", "INTERNAL_SERVER_ERROR"]            
       responses:
         200:
           description: Success
-  /balance:
+  /getVoyage:
     get:
       summary: Fetch balance for the user.
       operationId: getBalanceHandler
@@ -58,7 +64,7 @@ paths:
         200:
           description: Balances and Breakdowns thereof.
           schema:
-            $ref: '#/definitions/balance'
+            $ref: '#/definitions/successResponse'
 definitions:
   successResponse:
    type: object
@@ -74,5 +80,5 @@ definitions:
       type: string
     port:
       type: string
-    catpain:
+    captain:
       type: string      
