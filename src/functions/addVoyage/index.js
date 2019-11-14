@@ -1,3 +1,5 @@
+// TODO: We should really not import joi in every handler, probably these validations should move up a level and
+// be more self contained
 const Joi = require('joi')
 
 const joiSchema = Joi.object().keys({
@@ -22,6 +24,8 @@ export default async (event, context, callback, utils) => {
 	if (date === false) {
 		return callback(null, utils.responder.badRequest('Unexpected date format'))
 	}
+
+	// need to check the latest arrival is not before the last arrival.
 
 	const data = {
 		datetime: date,

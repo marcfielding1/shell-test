@@ -13,17 +13,19 @@ const errorReporting = require('./libs/errorReporting')
 const lambdaLogger = require('./libs/lambdaLogger')
 const es = require('./libs/elasticsearch')
 const convertFunkyDate = require('./libs/convertFunkyDate').default
+const calculateJourneys = require('./libs/calculateJourneys').default
 // Handlers
 
 const addVoyage = require('./functions/addVoyage').default
+const getVoyages = require('./functions/getVoyages').default
 
 const authorizer = require('./functions/authoriser/authoriser')
 
 // Mocks
-const addVoyageMock = require('./mocks/addVoyage')
+const addVoyageMock = require('./mocks/addVoyage').default
 
 const mockMap = {
-	addVoyage: addVoyageMock.default,
+	addVoyageHandler: addVoyageMock,
 }
 
 const utils = {
@@ -40,7 +42,8 @@ const utils = {
 		})
 	},
 	errorReporting,
-	convertFunkyDate: convertFunkyDate,
+	convertFunkyDate,
+	calculateJourneys,
 }
 
 const funcHandler = (func) => {
@@ -58,6 +61,7 @@ const funcHandler = (func) => {
 			let arrSplit = context.functionName.split('-')
 			let functionName = arrSplit[arrSplit.length - 1]
 
+			console.log(functionName)
 			return mockMap[functionName](event, context, callback, utils)
 		}
 
@@ -69,5 +73,6 @@ const funcHandler = (func) => {
 // TODO: fix gulp build so that you don't need the extra handlers.
 export const lambdaLoggerHandler = funcHandler(lambdaLogger)
 export const addVoyageHandler = funcHandler(addVoyage)
+export const getVoyagesHandler = funcHandler(getVoyages)
 
 export { authorizer }

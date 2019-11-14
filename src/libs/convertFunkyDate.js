@@ -1,6 +1,10 @@
+/*
+As per my comments on my documentation there's got to be a better way of doing this
+I'd be asking colleagues/team members(three amigos or whatever) for some ideas around this.
+*/
+
 export default (funkyDate) => {
   // TODO: this is a bit of a hack for the purposes of the test!
-
 	const numberPattern = /\d+/g
 	const numbers = funkyDate.match(numberPattern)
 	const words = funkyDate.split(' ')
@@ -11,7 +15,8 @@ export default (funkyDate) => {
 		return false
 	}
 
-    // if we can't get day and year.
+	// if we can't get day and year. This is bad juju because we could be getting "1 2 Buckle my shoe" - but we're assuming the
+	// external API is following the same format as in the example.
 	if (numbers.length !== 2) {
 		return false
 	}
