@@ -1,0 +1,20 @@
+{
+	"presets": [
+		[
+		  "@babel/preset-env",
+		  {
+			"targets": {
+			  "node": true
+			}
+		  }
+		]
+	  ],
+	"plugins": [
+		"@babel/plugin-transform-runtime"
+	],
+	"env": {
+		"test": {
+			"plugins": [ "istanbul" ]
+		}
+	}
+}

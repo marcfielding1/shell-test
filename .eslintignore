@@ -1,0 +1,6 @@
+build
+coverage
+coverage.lcov
+node_modules
+tasks
+gulpfile.babel.js

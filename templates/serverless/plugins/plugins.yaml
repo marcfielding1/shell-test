@@ -1,0 +1,9 @@
+  - serverless-pseudo-parameters
+  - serverless-plugin-split-stacks
+  - serverless-offline
+  - serverless-offline-sns
+  - serverless-delete-loggroups
+  - serverless-plugin-aws-alerts
+  - serverless-plugin-canary-deployments
+  - serverless-prune-plugin
+

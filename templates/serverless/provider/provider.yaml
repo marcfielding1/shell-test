@@ -1,0 +1,49 @@
+# NOTE DO NOT DELETE provider: from this file.
+service: pulse-API
+
+provider:
+  name: aws
+  vpc: ${{file(../scripts/deploymentMaps.js):vpc}}
+  runtime: nodejs8.10
+  region: eu-west-2
+  stage: ${{self:custom.currentStage}}
+  variableSyntax: "\\${{([ ~:a-zA-Z0-9._\\'\",\\-\\/\\(\\)]+?)}}"
+  timeout: 30
+  environment:
+    rdsdbuser: ${{ ssm:rds-username-${{self:custom.currentStage}}~true}}
+    rdsdbpassword: ${{ ssm:rds-dbpass-${{self:custom.currentStage}}~true}}
+    rdsdbdev: ${{ ssm:rds-db-${{self:custom.currentStage}}~true}}
+    NODE_ENV: ${{self:custom.currentStage}}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:*
+        - lambda:*
+        - sns:*
+        - ses:*
+        - cloudwatch:*
+        - s3:*
+      Resource: "*"
+  package:
+    include:
+      - ./*
+      - ../config
+custom:
+  splitStacks:
+    perFunction: false
+    perType: true
+  prune:
+    automatic: true
+    number: 3
+  defaultStage: test
+  currentStage: ${{opt:stage, self:custom.defaultStage}}
+  logGroup1: /aws/lambda/pulse-API-${{self:custom.currentStage}}-getBalanceHandler
+  logGroup2: /aws/lambda/pulse-API-${{self:custom.currentStage}}-getBalanceHandler
+  alerts:
+    global:
+      - functionErrors
+  deploymentSettings:
+    stages:
+      - master
+  environment:
+    NODE_ENV: ${{env:NODE_ENV}}
