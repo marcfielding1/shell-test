@@ -22,10 +22,10 @@ const getVoyages = require('./functions/getVoyages').default
 const authorizer = require('./functions/authoriser/authoriser')
 
 // Mocks
-const addVoyageMock = require('./mocks/addVoyage')
+const addVoyageMock = require('./mocks/addVoyage').default
 
 const mockMap = {
-	addVoyage: addVoyageMock.default,
+	addVoyageHandler: addVoyageMock,
 }
 
 const utils = {
@@ -61,6 +61,7 @@ const funcHandler = (func) => {
 			let arrSplit = context.functionName.split('-')
 			let functionName = arrSplit[arrSplit.length - 1]
 
+			console.log(functionName)
 			return mockMap[functionName](event, context, callback, utils)
 		}
 
