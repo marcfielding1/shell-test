@@ -1,9 +1,7 @@
 # shell-test
 Star Ship Tracking API!
 
-FYI I haven't quite started yet but I will get this in the next hour or two.
-
-This readme will be updated as I work, initial notes based on the spec provided. Will let you guys know when done.
+This readme will be updated as I work from feature branches merging into develop, initial notes based on the spec provided. Will let you guys know when done.
 
 # Initial notes
 
