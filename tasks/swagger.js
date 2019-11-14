@@ -6,8 +6,6 @@ import config from 'config'
 import fs from 'fs'
 import createFunction from './createFunction'
 
-const mockDataTemplate = require('../templates/mocks/mockDataTemplate')
-
 const isDev = process.env.NODE_ENV !== 'production'
 const stripFunction = fn => !isDev && (fn.devOnly === true)
 

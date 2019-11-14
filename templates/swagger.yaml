@@ -15,13 +15,13 @@ x-functions:
     resultTtlInSeconds: 0 # important or the authorizer caches the result - if you're using logout, logged out tokens would still be valid.
   lambdaLogger:
     handler: handler.lambdaLoggerHandler
-    events: ${{file(../scripts/subscribeToLogGroups.js)}}
+    #events: ${{file(../scripts/subscribeToLogGroups.js)}}
     role:
       Fn::GetAtt:
         - CloudWatchIAMRole
         - Arn
 paths:
-  /addVoyage:
+  /arrival:
     post:
       summary: add Voyage
       operationId: addVoyageHandler
@@ -38,16 +38,20 @@ paths:
           description: Custom header tells the backend to send a mock response based on the value for testing purposes.
           enum: ["ADD_VOYAGE_SUCCESS", "BAD_REQUEST", "INTERNAL_SERVER_ERROR"]            
       responses:
+        400:
+          description: Bad request or validation errors.
+        500:
+          description: Internal Server Error
         200:
-          description: Success
-  /getVoyage:
+          description: Voyage logged.
+  /history:
     get:
       summary: Fetch balance for the user.
-      operationId: getBalanceHandler
+      operationId: getVoyagesHandler
       x-authorizer: authorizer
       parameters:
-        - in: header
-          name: "Authorization"
+        - in: path
+          name: "captain"
           required: true
           type: string
         - in: header

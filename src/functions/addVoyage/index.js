@@ -17,9 +17,15 @@ export default async (event, context, callback, utils) => {
 		return callback(null, utils.responder.validationError(validation.error))
 	}
 
+	const date = utils.convertFunkyDate(datetime)
+
+	if (date === false) {
+		return callback(null, utils.responder.badRequest('Unexpected date format'))
+	}
+
 	const data = {
+		datetime: date,
 		vessel,
-		datetime,
 		port,
 		captain,
 	}

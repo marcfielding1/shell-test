@@ -1,4 +1,3 @@
-import createInvoicesResponse from './invoicesMocks'
 
 export default (event, context, callback, utils) => {
 
