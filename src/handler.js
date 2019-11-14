@@ -3,18 +3,19 @@
 /* eslint import/prefer-default-export: 0 */
 /* eslint import/first: 0 */
 
-import SDKWrapper from './libs/SDKWrapper'
-import responder from './libs/serverless-responder'
-import logger from './libs/logger'
-import MySQL from './libs/MySQL'
-import to from './libs/awaitToObjects'
-import errorReporting from './libs/errorReporting'
-import lambdaLogger from './libs/lambdaLogger'
-import es from './libs/elasticsearch'
+// Utils
+const SDKWrapper = require('./libs/SDKWrapper')
+const responder = require('./libs/serverless-responder')
+const logger = require('./libs/logger')
+const MySQL = require('./libs/MySQL')
+const to = require('./libs/awaitToObjects')
+const errorReporting = require('./libs/errorReporting')
+const lambdaLogger = require('./libs/lambdaLogger')
+const es = require('./libs/elasticsearch')
 
+const authorizer = require('./functions/authoriser/authoriser')
 
-import authorizer from './functions/authoriser/authoriser'
-
+// Mocks
 const addVoyage = require('./mocks/addVoyage')
 
 const mockMap = {
