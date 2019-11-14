@@ -1,6 +1,5 @@
 import sinon from 'sinon'
-import logger from 'pulse-core-libs/logger'
-import responder from 'pulse-core-libs/serverless-responder'
+import responder from '../libs/serverless-responder'
 
 const generateApiGatewayEvent = ({
 	body,
