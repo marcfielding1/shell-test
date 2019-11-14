@@ -44,11 +44,10 @@ paths:
           description: Internal Server Error
         200:
           description: Voyage logged.
-  /history:
+  /history/{captain}:
     get:
-      summary: Fetch balance for the user.
+      summary: Fetch voyages for captain.
       operationId: getVoyagesHandler
-      x-authorizer: authorizer
       parameters:
         - in: path
           name: "captain"
@@ -59,22 +58,37 @@ paths:
           required: false
           type: string
           description: Custom header tells the backend to send a mock response based on the value for testing purposes.
-          enum: ["BALANCE_NONE", "BALANCE_SOME", "BALANCE_ERROR", "BALANCE_NEGATIVE"]
+          enum: ["FETCH_VOYAGES_SUCCESS", "BAD_REQUEST", "INTERNAL_SERVER_ERROR"]            
       responses:
         400:
           description: Bad request or validation errors
-        401:
-          description: Not Authorized
+        500:
+          description: Internal Server Error
         200:
-          description: Balances and Breakdowns thereof.
+          description: List of Voyages
           schema:
-            $ref: '#/definitions/successResponse'
+            $ref: '#/definitions/successGetVoyages'
 definitions:
-  successResponse:
+  successGetVoyages:
    type: object
    properties: 
-    success:
-      type: boolean
+    captain:
+      type: string
+    trips: 
+      type: array
+      items:
+        type: object
+        properties:
+          vessel:
+            type: string
+          from:
+            type: string
+          to:
+            type: string
+          fromDate:
+            type: string
+          toDate:
+            type: string
   addVoyage:
    type: object
    properties: 

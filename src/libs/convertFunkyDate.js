@@ -21,7 +21,9 @@ export default (funkyDate) => {
 	const months = ['Jan', 'Feb', 'April', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 	const month = words.filter(e => months.indexOf(e) !== -1)
 	const numericalMonth = months.indexOf(month[0]) + 1
+	console.log(`${numbers[1]}.${numericalMonth}.${numbers[0]}`)
 	const timestamp = (new Date(`${numbers[1]}.${numericalMonth}.${numbers[0]}`).getTime() / 1000).toFixed(0)
+	console.log('TCL: timestamp', timestamp)
 
 	return timestamp
 }

@@ -23,6 +23,8 @@ export default async (event, context, callback, utils) => {
 		return callback(null, utils.responder.badRequest('Unexpected date format'))
 	}
 
+	// need to check the latest arrival is not before the last arrival.
+
 	const data = {
 		datetime: date,
 		vessel,

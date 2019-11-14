@@ -16,6 +16,7 @@ const convertFunkyDate = require('./libs/convertFunkyDate').default
 // Handlers
 
 const addVoyage = require('./functions/addVoyage').default
+const getVoyages = require('./functions/getVoyages').default
 
 const authorizer = require('./functions/authoriser/authoriser')
 
@@ -69,5 +70,6 @@ const funcHandler = (func) => {
 // TODO: fix gulp build so that you don't need the extra handlers.
 export const lambdaLoggerHandler = funcHandler(lambdaLogger)
 export const addVoyageHandler = funcHandler(addVoyage)
+export const getVoyagesHandler = funcHandler(getVoyages)
 
 export { authorizer }
