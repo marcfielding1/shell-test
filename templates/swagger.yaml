@@ -21,21 +21,19 @@ x-functions:
         - CloudWatchIAMRole
         - Arn
 paths:
-  /magicTokenDev:
+  /addVoyage:
     post:
-      summary: Dev-only endpoint for returning a magic token directly to the client.
-      operationId: magicTokenDevHandler
+      summary: add Voyage
+      operationId: addVoyageHandler
       parameters:
         - in: body
           name: body
           required: true
           schema:
-            $ref: '#/definitions/magicLinkRequest'
+            $ref: '#/definitions/addVoyage'
       responses:
         200:
-          description: A dev-only magic link token.
-          schema:
-            $ref: '#/definitions/magicLinkValidationRequest'
+          description: Success
   /balance:
     get:
       summary: Fetch balance for the user.
@@ -67,216 +65,14 @@ definitions:
    properties: 
     success:
       type: boolean
-  magicLinkRequest:
+  addVoyage:
    type: object
    properties: 
-    email:
+    vessel:
       type: string
-  magicLinkValidationRequest:
-   type: object
-   properties: 
-    signInToken:
+    datetime:
       type: string
-  tokenResponse:
-   type: object
-   properties: 
-    token:
+    port:
       type: string
-  accountancyProvider:
-    type: object
-    properties:
-      key:
-        type: string
-      logoUrl:
-        type: string
-      name:
-        type: string
-      enabled:
-        type: boolean
-      sourceType:
-        type: string
-    example:
-      key: "xero"
-      logoUrl: "https://static.codat.io/public/platforms/xero.png"
-      name: "Xero"
-      enabled: true
-      sourceType: "Accounting"
-  accountancyProviderStatus:
-    type: object
-    properties:
-      key:
-        type: string
-      linkStatus:
-        type: boolean
-    example:
-        key: "xero"
-        linkStatus: true
-  openBankingStatus:
-    type: object
-    properties:
-      linkStatus:
-        type: boolean
-  openBankingInvitation:
-    type: object
-    properties:
-      inviteUrl:
-        type: string
-  invoices:
-    type: object
-    properties:
-      # summary:
-      #   type: object
-      #   properties:
-      #     range:
-      #       type: string
-      #       enum: [week, month, year]
-      #     totalOverdue:
-      #       type: integer
-      #     totalDue:
-      #       type: integer
-      #     totalPaid:
-      #       type: integer
-      list:
-        type: object
-        properties:
-          meta:
-            type: object
-            # properties:
-            #   offset:
-            #     type: integer
-            #   totalItems:
-            #     type: integer
-          items:
-            type: array
-            items:
-              $ref: '#/definitions/invoice'
-          associatedData:
-            $ref: '#/definitions/associatedData'
-  associatedData:
-    type: object
-    properties:
-      companies:
-        description: Unique list of companies
-        type: array
-        items:
-          $ref: '#/definitions/company'
-  invoice:
-    type: object
-    properties:
-      id:
-        type: string
-      number:
-        type: string
-      # description:
-      #   type: string
-      status:
-        type: string
-        enum: [OVERDUE, DUE, PAID]
-      totalAmount:
-        $ref: '#/definitions/money'
-      # paidAmount:
-      #   description: Optional
-      #   $ref: '#/definitions/money'
-      dateIssued:
-        type: string
-        format: date-time
-      dateDue:
-        type: string
-        format: date-time
-      datePaid:
-        type: string
-        format: date-time
-      companyId:
-        type: string
-    example:
-      id: UIOP-0987-MNBV
-      number: 1234567
-      status: OVERDUE
-      totalAmount: 
-        $ref: '#/definitions/money/example'
-      dateIssued: 2018-10-08T22:40:50Z
-      dateDue: 2018-11-08T22:40:50Z
-      datePaid:
-      companyId: 
-        $ref: '#/definitions/company/example/id'
-  money:
-    type: object
-    properties:
-      currency:
-        type: string
-      amount:
-        description: Amount represented in the minor unit of the currency. A negative number will be given if considered arrears, projected or actual
-        type: number
-    example:
-      currency: GBP
-      amount: 100000
-      
-  company: # Not sure on the naming of this object
-    type: object
-    properties:
-      id:
-        type: string
-      name:
-        type: string
-      averagePayment:
-        $ref: '#/definitions/averagePayment'
-      # contact:
-      #   description: name of contact person
-      #   type: string
-      # email:
-      #   type: string
-      # phoneNumber:
-      #   type: integer
-    example:
-      id: QWER-5678-ASDF
-      name: Company X
-      averagePayment:
-        $ref: '#/definitions/averagePayment/example'
-  averagePayment:
-    type: object
-    properties:
-      averagePaymentLeadTime:
-        type: object
-        properties:
-          value:
-            type: number
-          timeFrame:
-            type: string
-            enum: [DAYS, MONTHS]
-    example:
-      averagePaymentLeadTime:
-        value: 2
-        timeFrame: MONTHS
-  balance:
-    type: object
-    properties:
-      summary:
-        type: object
-        properties:
-          balances:
-            type: object
-            properties:
-              total:
-                $ref: '#/definitions/money'
-              calculated:
-                $ref: '#/definitions/money'
-      list:
-        type: object
-        properties:
-          meta:
-            type: object
-          items:
-            type: array
-            items:
-              $ref: '#/definitions/balanceBreakdown'
-  balanceBreakdown:
-    description: Line Item to demarcate a balance by its category and name
-    type: object
-    properties:
-      breakdownCategory:
-        type: string
-        enum: [INCOME, TAX, OUTGOING]
-      name:
-        type: string
-      amount:
-        $ref: '#/definitions/money'
+    catpain:
+      type: string      

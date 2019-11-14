@@ -66,7 +66,7 @@ function transform(payload) {
 
         // index name format: cwl-YYYY.MM.DD
 		const indexName = [
-			`pulse-api-${process.env.NODE_ENV}-${timestamp.getUTCFullYear()}`,              // year
+			`shell-test-${process.env.NODE_ENV}-${timestamp.getUTCFullYear()}`,              // year
 			(`0${timestamp.getUTCMonth() + 1}`).slice(-2),  // month
 			(`0${timestamp.getUTCDate()}`).slice(-2),          // day
 		].join('.')

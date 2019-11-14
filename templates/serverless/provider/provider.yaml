@@ -1,5 +1,5 @@
 # NOTE DO NOT DELETE provider: from this file.
-service: pulse-API
+service: shell-test
 
 provider:
   name: aws
@@ -37,8 +37,8 @@ custom:
     number: 3
   defaultStage: test
   currentStage: ${{opt:stage, self:custom.defaultStage}}
-  logGroup1: /aws/lambda/pulse-API-${{self:custom.currentStage}}-getBalanceHandler
-  logGroup2: /aws/lambda/pulse-API-${{self:custom.currentStage}}-getBalanceHandler
+  logGroup1: /aws/lambda/shell-test-${{self:custom.currentStage}}-getBalanceHandler
+  logGroup2: /aws/lambda/shell-test-${{self:custom.currentStage}}-getBalanceHandler
   alerts:
     global:
       - functionErrors
