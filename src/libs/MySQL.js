@@ -25,10 +25,10 @@ class MySQL {
 	async createConnection() {
 
 		this.connection = await mysql.createConnection({
-			host: process.env.rdsdbhost,
-			user: process.env.rdsdbuser,
-			password: process.env.rdsdbpassword,
-			database: process.env.rdsdbdev,
+			host: 'tths.ctx0djyjjako.eu-west-2.rds.amazonaws.com', // TODO: Push out to config.
+			user: process.env.dbUser,
+			password: process.env.dbPassword,
+			database: process.env.db,
 		})
 
 

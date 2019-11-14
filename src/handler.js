@@ -3,22 +3,27 @@
 /* eslint import/prefer-default-export: 0 */
 /* eslint import/first: 0 */
 
-import SDKWrapper from './libs/SDKWrapper'
-import responder from './libs/serverless-responder'
-import logger from './libs/logger'
-import MySQL from './libs/MySQL'
-import to from './libs/awaitToObjects'
-import errorReporting from './libs/errorReporting'
-import lambdaLogger from './libs/lambdaLogger'
-import es from './libs/elasticsearch'
+// Utils
+const SDKWrapper = require('./libs/SDKWrapper')
+const responder = require('./libs/serverless-responder')
+const logger = require('./libs/logger')
+const MySQL = require('./libs/MySQL')
+const to = require('./libs/awaitToObjects')
+const errorReporting = require('./libs/errorReporting')
+const lambdaLogger = require('./libs/lambdaLogger')
+const es = require('./libs/elasticsearch')
+const convertFunkyDate = require('./libs/convertFunkyDate').default
+// Handlers
 
+const addVoyage = require('./functions/addVoyage').default
 
-import authorizer from './functions/authoriser/authoriser'
+const authorizer = require('./functions/authoriser/authoriser')
 
-const addVoyage = require('./mocks/addVoyage')
+// Mocks
+const addVoyageMock = require('./mocks/addVoyage')
 
 const mockMap = {
-	addVoyage: addVoyage.default,
+	addVoyage: addVoyageMock.default,
 }
 
 const utils = {
@@ -35,9 +40,11 @@ const utils = {
 		})
 	},
 	errorReporting,
+	convertFunkyDate: convertFunkyDate,
 }
 
 const funcHandler = (func) => {
+	console.log(func)
 	return (event, context, callback) => {
 		context.callbackWaitsForEmptyEventLoop = false
 		utils.logger.info({ req: event, context: context }, 'Request Started')
@@ -61,4 +68,6 @@ const funcHandler = (func) => {
 
 // TODO: fix gulp build so that you don't need the extra handlers.
 export const lambdaLoggerHandler = funcHandler(lambdaLogger)
+export const addVoyageHandler = funcHandler(addVoyage)
+
 export { authorizer }

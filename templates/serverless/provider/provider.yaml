@@ -10,9 +10,9 @@ provider:
   variableSyntax: "\\${{([ ~:a-zA-Z0-9._\\'\",\\-\\/\\(\\)]+?)}}"
   timeout: 30
   environment:
-    rdsdbuser: ${{ ssm:rds-username-${{self:custom.currentStage}}~true}}
-    rdsdbpassword: ${{ ssm:rds-dbpass-${{self:custom.currentStage}}~true}}
-    rdsdbdev: ${{ ssm:rds-db-${{self:custom.currentStage}}~true}}
+    dbUser: ${{ ssm:tthsDbUser-${{self:custom.currentStage}}~true}}
+    dbPassword: ${{ ssm:tthsDbPassword-${{self:custom.currentStage}}~true}}
+    db: ${{ ssm:shelldb-${{self:custom.currentStage}}~true}}
     NODE_ENV: ${{self:custom.currentStage}}
   iamRoleStatements:
     - Effect: Allow
