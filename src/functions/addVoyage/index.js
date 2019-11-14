@@ -1,3 +1,5 @@
+// TODO: We should really not import joi in every handler, probably these validations should move up a level and
+// be more self contained
 const Joi = require('joi')
 
 const joiSchema = Joi.object().keys({

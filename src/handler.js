@@ -13,6 +13,7 @@ const errorReporting = require('./libs/errorReporting')
 const lambdaLogger = require('./libs/lambdaLogger')
 const es = require('./libs/elasticsearch')
 const convertFunkyDate = require('./libs/convertFunkyDate').default
+const calculateJourneys = require('./libs/calculateJourneys').default
 // Handlers
 
 const addVoyage = require('./functions/addVoyage').default
@@ -41,7 +42,8 @@ const utils = {
 		})
 	},
 	errorReporting,
-	convertFunkyDate: convertFunkyDate,
+	convertFunkyDate,
+	calculateJourneys,
 }
 
 const funcHandler = (func) => {
