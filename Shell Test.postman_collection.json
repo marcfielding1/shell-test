@@ -1,0 +1,93 @@
+{
+	"info": {
+		"_postman_id": "a719e99c-8c53-4180-b285-cfa48377139d",
+		"name": "Shell Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Arrivals",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-mock-header",
+						"value": "ADD_VOYAGE_SUCCESS",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"datetime\": \"14th of Feb 2056\",\n\t\"vessel\": \"The Black Pearl\",\n\t\"captain\": \"Jack Sparrow\",\n\t\"port\": \"New York\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://2deizqvxk5.execute-api.eu-west-2.amazonaws.com/dev/arrival",
+					"protocol": "https",
+					"host": [
+						"2deizqvxk5",
+						"execute-api",
+						"eu-west-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"arrival"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Arrivals",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-MOCK-HEADER",
+						"value": "ADD_VOYAGE_SUCESS",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://2deizqvxk5.execute-api.eu-west-2.amazonaws.com/dev/history/Jack Sparrow",
+					"protocol": "https",
+					"host": [
+						"2deizqvxk5",
+						"execute-api",
+						"eu-west-2",
+						"amazonaws",
+						"com"
+					],
+					"path": [
+						"dev",
+						"history",
+						"Jack Sparrow"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
