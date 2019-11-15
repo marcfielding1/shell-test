@@ -16,6 +16,7 @@ export default (event, context, callback, utils) => {
 	const requestedMock = event.headers['x-mock-header']
 
 	if (!requestedMock) {
+
 		return callback(null, utils.responder.internalServerError('No mock value found in x-mock-header'))
 	}
 
