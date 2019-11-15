@@ -15,7 +15,7 @@ x-functions:
     resultTtlInSeconds: 0 # important or the authorizer caches the result - if you're using logout, logged out tokens would still be valid.
   lambdaLogger:
     handler: handler.lambdaLoggerHandler
-    #events: ${{file(../scripts/subscribeToLogGroups.js)}}
+    events: ${{file(../scripts/subscribeToLogGroups.js)}}
     role:
       Fn::GetAtt:
         - CloudWatchIAMRole

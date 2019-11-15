@@ -3,7 +3,6 @@ service: shell-test
 
 provider:
   name: aws
-  vpc: ${{file(../scripts/deploymentMaps.js):vpc}}
   runtime: nodejs8.10
   region: eu-west-2
   stage: ${{self:custom.currentStage}}
