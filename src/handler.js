@@ -23,9 +23,11 @@ const authorizer = require('./functions/authoriser/authoriser')
 
 // Mocks
 const addVoyageMock = require('./mocks/addVoyage').default
+const getVoyagesMock = require('./mocks/getVoyages.js').default
 
 const mockMap = {
 	addVoyageHandler: addVoyageMock,
+	getVoyagesHandler: getVoyagesMock,
 }
 
 const utils = {

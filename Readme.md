@@ -3,7 +3,6 @@
 ![Alt text](/ArchitectureDiagram.png?raw=true "Optional Title")
 
 
-
 ### Video Walk through
 
 Video explainer: https://www.dropbox.com/s/h3v7p79nnv0e9ru/WalkThrough.mov?dl=0

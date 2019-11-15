@@ -15,7 +15,7 @@ x-functions:
     resultTtlInSeconds: 0 # important or the authorizer caches the result - if you're using logout, logged out tokens would still be valid.
   lambdaLogger:
     handler: handler.lambdaLoggerHandler
-    events: ${{file(../scripts/subscribeToLogGroups.js)}}
+    #events: ${{file(../scripts/subscribeToLogGroups.js)}}
     role:
       Fn::GetAtt:
         - CloudWatchIAMRole
@@ -58,7 +58,7 @@ paths:
           required: false
           type: string
           description: Custom header tells the backend to send a mock response based on the value for testing purposes.
-          enum: ["FETCH_VOYAGES_SUCCESS", "BAD_REQUEST", "INTERNAL_SERVER_ERROR"]            
+          enum: ["GET_VOYAGES_SUCCESS", "BAD_REQUEST", "INTERNAL_SERVER_ERROR"]            
       responses:
         400:
           description: Bad request or validation errors

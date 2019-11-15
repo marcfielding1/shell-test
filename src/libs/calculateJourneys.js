@@ -23,6 +23,8 @@ export default (trips) => {
 		parsedResults.push(trip[0])
 		delete parsedResults[parsedResults.length - 1].port
 		delete parsedResults[parsedResults.length - 1].id
+		delete parsedResults[parsedResults.length - 1].datetime
+
 	}
 
 	return parsedResults
