@@ -8,6 +8,10 @@
 
 Video explainer: https://www.dropbox.com/s/h3v7p79nnv0e9ru/WalkThrough.mov?dl=0
 
+### Postman collection
+
+The postman collection is available at project root!
+
 ### Quick Start
 
 Please note that I've included these instructions but they won't work locally without AWS access keys, I CAN create a user but it's probably easier just to use the deployed version.
