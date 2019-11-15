@@ -15,8 +15,13 @@ export default (trips) => {
 
 		trips[index].fromDate = trip1.datetime
 		trips[index].toDate = trip2.datetime
+		trips[index].from = trip1.port
+		trips[index].to = trip2.port
 
-		parsedResults.push(trips.slice(index, index + 1))
+		let trip = trips.slice(index, index + 1)
+
+		parsedResults.push(trip[0])
+		delete parsedResults[parsedResults.length - 1].port
 
 	}
 
